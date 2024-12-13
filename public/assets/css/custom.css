@@ -1,0 +1,48 @@
+.my-login{
+    display: flex;
+    justify-content: center;
+}
+
+/* Custom CSS for Task List Background Colors */
+
+/* Low priority - light background */
+.priority-low {
+  background-color: #e7f1fb !important;
+}
+
+/* Medium priority - soft yellow background */
+.priority-medium {
+  background-color: #fbecba !important;
+}
+
+/* High priority - light red background */
+.priority-high {
+  background-color: #fc5c6a !important;
+}
+
+/* Default priority - gray background */
+.priority-default {
+  background-color: #d6d8db !important;
+}
+
+.form-check-input[type=checkbox]:checked {
+  background-color: #00b74a !important;
+}
+
+.form-check-input:checked {
+  border-color: #00b74a !important;
+}
+
+.card {
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, .3) !important;
+}
+
+/* For template */
+@media (min-width: 1400px) {
+
+  main,
+  header,
+  #main-navbar {
+    padding-left: 240px;
+  }
+}

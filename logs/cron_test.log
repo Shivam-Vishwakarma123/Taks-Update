@@ -1,0 +1,41 @@
+Checking tasks due tomorrow: 2024-11-20
+2024-11-19 11:54:01 SERVER -&gt; CLIENT: 220 mx.zoho.in SMTP Server ready November 19, 2024 5:24:01 PM IST<br>
+2024-11-19 11:54:01 CLIENT -&gt; SERVER: EHLO niplseven<br>
+2024-11-19 11:54:01 SERVER -&gt; CLIENT: 250-mx.zoho.in Hello niplseven (61.247.238.175 (61.247.238.175))250-AUTH LOGIN PLAIN250 SIZE 53477376<br>
+2024-11-19 11:54:01 CLIENT -&gt; SERVER: AUTH LOGIN<br>
+2024-11-19 11:54:02 SERVER -&gt; CLIENT: 334 VXNlcm5hbWU6<br>
+2024-11-19 11:54:02 CLIENT -&gt; SERVER: [credentials hidden]<br>
+2024-11-19 11:54:02 SERVER -&gt; CLIENT: 334 UGFzc3dvcmQ6<br>
+2024-11-19 11:54:02 CLIENT -&gt; SERVER: [credentials hidden]<br>
+2024-11-19 11:54:02 SERVER -&gt; CLIENT: 235 Authentication Successful<br>
+2024-11-19 11:54:02 CLIENT -&gt; SERVER: MAIL FROM:&lt;shivam.v@nirvaat.com&gt;<br>
+2024-11-19 11:54:02 SERVER -&gt; CLIENT: 250 Sender &lt;shivam.v@nirvaat.com&gt; OK<br>
+2024-11-19 11:54:02 CLIENT -&gt; SERVER: RCPT TO:&lt;shivam.v@nirvaat.com&gt;<br>
+2024-11-19 11:54:02 SERVER -&gt; CLIENT: 250 Recipient &lt;shivam.v@nirvaat.com&gt; OK<br>
+2024-11-19 11:54:02 CLIENT -&gt; SERVER: DATA<br>
+2024-11-19 11:54:02 SERVER -&gt; CLIENT: 354 Ok Send data ending with &lt;CRLF&gt;.&lt;CRLF&gt;<br>
+2024-11-19 11:54:02 CLIENT -&gt; SERVER: Date: Tue, 19 Nov 2024 11:54:01 +0000<br>
+2024-11-19 11:54:02 CLIENT -&gt; SERVER: To: shivam.v@nirvaat.com<br>
+2024-11-19 11:54:02 CLIENT -&gt; SERVER: From: Nirvaat Internet Private Limited &lt;shivam.v@nirvaat.com&gt;<br>
+2024-11-19 11:54:02 CLIENT -&gt; SERVER: Subject: Urgent: Task Notification - Due Tomorrow: CV Gastro<br>
+2024-11-19 11:54:02 CLIENT -&gt; SERVER: Message-ID: &lt;Gjfvza15GKbMn27SYlZzeHKo5o5jcsvnIzpEgfdc@niplseven&gt;<br>
+2024-11-19 11:54:02 CLIENT -&gt; SERVER: X-Mailer: PHPMailer 6.9.2 (https://github.com/PHPMailer/PHPMailer)<br>
+2024-11-19 11:54:02 CLIENT -&gt; SERVER: MIME-Version: 1.0<br>
+2024-11-19 11:54:02 CLIENT -&gt; SERVER: Content-Type: text/plain; charset=iso-8859-1<br>
+2024-11-19 11:54:02 CLIENT -&gt; SERVER: <br>
+2024-11-19 11:54:02 CLIENT -&gt; SERVER: Hello Shivam Vishwakarma,<br>
+2024-11-19 11:54:02 CLIENT -&gt; SERVER: <br>
+2024-11-19 11:54:02 CLIENT -&gt; SERVER: This is a reminder that your task &quot;CV Gastro&quot; is due tomorrow, 2024-11-20.<br>
+2024-11-19 11:54:02 CLIENT -&gt; SERVER: <br>
+2024-11-19 11:54:02 CLIENT -&gt; SERVER: Task Description: In the update the doctors images.<br>
+2024-11-19 11:54:02 CLIENT -&gt; SERVER: <br>
+2024-11-19 11:54:02 CLIENT -&gt; SERVER: Please make sure to complete it before the due date.<br>
+2024-11-19 11:54:02 CLIENT -&gt; SERVER: <br>
+2024-11-19 11:54:02 CLIENT -&gt; SERVER: Best Regards, Nirvaat Internet Private Limited<br>
+2024-11-19 11:54:02 CLIENT -&gt; SERVER: <br>
+2024-11-19 11:54:02 CLIENT -&gt; SERVER: .<br>
+2024-11-19 11:54:02 SERVER -&gt; CLIENT: 250 Message received<br>
+2024-11-19 11:54:02 CLIENT -&gt; SERVER: QUIT<br>
+2024-11-19 11:54:02 SERVER -&gt; CLIENT: 221 mx.zoho.in closing connection<br>
+Notification sent to user: shivam.v@nirvaat.com for task due tomorrow.
+Hourly notification sending task completed.
