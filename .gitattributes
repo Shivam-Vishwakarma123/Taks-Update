@@ -1,11 +1,43 @@
-* text=auto eol=lf
+# Normalize line endings to LF (recommended for Linux and macOS)
+* text=auto
 
-*.blade.php diff=html
-*.css diff=css
-*.html diff=html
-*.md diff=markdown
-*.php diff=php
+# Force binary files to be treated as binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
 
-/.github export-ignore
-CHANGELOG.md export-ignore
-.styleci.yml export-ignore
+# Ignore changes in lock files during merging
+composer.lock merge=ours
+package-lock.json merge=ours
+
+# Set export-ignore for files not needed in deployment
+.env export-ignore
+.gitignore export-ignore
+.gitattributes export-ignore
+README.md export-ignore
+tests/ export-ignore
+writable/cache/* export-ignore
+writable/logs/* export-ignore
+writable/session/* export-ignore
+
+# Handle PHP diffing
+*.php diff
+
+# Handle Blade templates as text
+*.blade.php text
+
+# Handle CSS and JavaScript as text
+*.css text
+*.js text
+
+# Ignore vendor and writable folder content in diff (already ignored in .gitignore)
+vendor/* export-ignore
+writable/* export-ignore

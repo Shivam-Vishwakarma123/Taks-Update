@@ -5,6 +5,21 @@
 /.env
 /tests
 
+# Ignore the writable directory and its contents
+writable/*
+/writable/*
+
+# But keep the writable folder structure
+!writable/index.html
+!writable/uploads/
+
+# Specific writable subdirectories to ignore
+writable/cache/*
+writable/logs/*
+writable/session/*
+writable/debugbar/*
+writable/temp/*
+
 # OS generated files
 .DS_Store
 Thumbs.db
