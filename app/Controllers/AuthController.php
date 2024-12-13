@@ -3,100 +3,94 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
+use CodeIgniter\Controller;
 
 class AuthController extends BaseController
 {
-
+    // Display the login form
     public function login()
     {
-        $title = "User Login";
-        return view('auth/login', ['title' => $title]);
+        return view('auth/login', ['title' => 'User Login']);
     }
 
+    // Handle login logic
     public function loginUser()
     {
-        // Validate the input
-        if (!$this->validate([
+        $validationRules = [
             'email' => 'required|valid_email',
             'password' => 'required',
-        ])) {
-            return redirect()->to('/login')->withInput();
+        ];
+
+        if (!$this->validate($validationRules)) {
+            return redirect()->to('/login')->withInput()->with('error', 'Invalid input data.');
         }
 
-        // Get data from the form
         $email = $this->request->getPost('email');
         $password = $this->request->getPost('password');
         $rememberMe = $this->request->getPost('remember-me');
 
         $userModel = new UserModel();
+        $user = $userModel->where('email', $email)->first();
 
-        // Check if user credentials are valid
-        $user = $userModel->validateCredentials($email, $password);
-
-        if (!is_array($user)) {
-            return redirect()->to('/login')->with('error', $user);
+        if (!$user || !password_verify($password, $user['password'])) {
+            return redirect()->to('/login')->with('error', 'Invalid credentials.');
         }
 
         // Set user session
-        session()->set('user_id', $user['id']);
-        session()->set('username', $user['username']);
-        session()->set('user_email', $user['email']);
+        session()->set([
+            'user_id' => $user['id'],
+            'username' => $user['username'],
+            'user_email' => $user['email'],
+        ]);
 
+        // Handle "Remember Me" functionality
         if ($rememberMe) {
-            // Set cookies for "Remember Me" functionality (email and password)
             setcookie('email', $email, time() + (86400 * 30), '/', '', false, true);
             setcookie('password', $password, time() + (86400 * 30), '/', '', false, true);
         }
 
-        return redirect()->to('/tasks')->with('message', 'Logged In successfully');
+        return redirect()->to('/tasks')->with('message', 'Logged in successfully.');
     }
 
-
+    // Handle user logout
     public function logout()
     {
         session()->destroy();
-        return redirect()->to('/login');
+        return redirect()->to('/login')->with('message', 'Logged out successfully.');
     }
 
+    // Display the registration form
     public function register()
     {
-        $title = "User Register";
-        return view('auth/register', ['title' => $title]);
+        return view('auth/register', ['title' => 'User Register']);
     }
 
+    // Handle user registration
     public function registerUser()
     {
-        $model = new UserModel();
-
-        // Validate the input
-        if (!$this->validate([
-            'email' => 'required|valid_email',
-            'password' => 'required',
-        ])) {
-            return redirect()->to('/register')->withInput();
-        }
-
-        
-        // Find the input data.
-        $userData = [
-            'username'    => $this->request->getPost('username'),
-            'email'       => $this->request->getPost('email'),
-            'password'    => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
-            'status'      => '1',
+        $validationRules = [
+            'username' => 'required|min_length[3]|max_length[255]',
+            'email' => 'required|valid_email|is_unique[users.email]',
+            'password' => 'required|min_length[6]',
         ];
 
-        // Save the user to the database
-        if ($model->save($userData)) {
-            // Redirect to login page with success message
+        if (!$this->validate($validationRules)) {
+            return redirect()->to('/register')->withInput()->with('error', 'Invalid input data.');
+        }
+
+        $userData = [
+            'username' => $this->request->getPost('username'),
+            'email' => $this->request->getPost('email'),
+            'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+            'status' => '1',
+        ];
+
+        $userModel = new UserModel();
+        if ($userModel->save($userData)) {
             return redirect()->to('/login')->with('message', 'Registration successful! Please log in.');
         } else {
-            // Get the last error message
-            $errors = $model->errors();
-
-            // If there are errors, grab the first one or display a generic message
+            $errors = $userModel->errors();
             $errorMessage = !empty($errors) ? reset($errors) : 'Registration failed, please try again.';
-
-            // Return to the register page with the error message
             return redirect()->to('/register')->with('error', $errorMessage);
         }
     }
